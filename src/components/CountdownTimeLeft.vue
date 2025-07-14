@@ -30,8 +30,8 @@ const timeLeftString = ref("");
 
 onMounted(() => {
   setInterval(() => {
-    const diff = secondsLeft(state.data?.schedule);
+    const diff = secondsLeft(state.data?.schedule) + 1;
     timeLeftString.value = diff >= 0 ? secondsToMMSS(diff) : "00:00";
-  }, 1000);
+  }, 10);
 });
 </script>
