@@ -1,1 +1,75 @@
 @import "./base.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap&family=Nothing+You+Could+Do&family=DM+Serif+Display:ital@0;1&display=swap");
+
+/* Font Classes */
+
+.dm-serif-display-regular {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-serif-display-regular-italic {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.zen-maru-gothic-light {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.zen-maru-gothic-regular {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.zen-maru-gothic-medium {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.zen-maru-gothic-bold {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.zen-maru-gothic-black {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.nothing-you-could-do-regular {
+  font-family: "Nothing You Could Do", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Antihero";
+  src: url("@/assets/fonts/Antihero.otf") format("opentype");
+}
+
+.antihero {
+  font-family: "Antihero", serif;
+}
+
+/* Colors */
+
+:root {
+  --color-CO: #7bfffd;
+  --color-TE: #d27bff;
+  --color-WC: #ff7b7b;
+  --color-DE: #ffe17b;
+  --color-TB: #ffffff;
+
+  --color-R: #ff8080;
+  --color-B: #809eff;
+}
