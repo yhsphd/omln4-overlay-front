@@ -54,9 +54,9 @@
 <script setup>
 import { ref } from "vue";
 
-import CountdownTimeLeft from "@/components/CountdownTimeLeft.vue";
-import CountdownWheel from "@/components/CountdownWheel.vue";
-import CountdownNowPlaying from "@/components/CowntdownNowPlaying.vue";
+import CountdownTimeLeft from "@/components/Countdown/CountdownTimeLeft.vue";
+import CountdownWheel from "@/components/Countdown/CountdownWheel.vue";
+import CountdownNowPlaying from "@/components/Countdown/CowntdownNowPlaying.vue";
 
 const showcase = ref(false);
 </script>
