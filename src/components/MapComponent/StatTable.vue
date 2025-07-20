@@ -65,6 +65,6 @@ import starImage from "@/assets/img/map/star.png";
 import { secondsToMMSS } from "@/assets/utils";
 
 defineProps({
-  stats: Object,
+  stats: { type: Object, default: () => ({ sr: 0, hp: 0, od: 0, length: 0 }) },
 });
 </script>

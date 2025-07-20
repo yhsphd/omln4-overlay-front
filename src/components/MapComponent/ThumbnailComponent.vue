@@ -8,7 +8,7 @@
         :style="{ backgroundImage: `url('${bgUrl}')` }"
       ></div>
     </div>
-    <img v-if="ban" class="bannedImg" :src="bannedImage" />
+    <img v-if="ban" class="bannedImg" :src="team ? bannedImage_r : bannedImage_b" />
     <img v-if="pick" class="pickedImg" :src="team ? pickedImage_r : pickedImage_b" />
   </div>
 </template>
@@ -72,7 +72,8 @@
 
 <script setup>
 import hiddenImage from "@/assets/img/map/hidden.png";
-import bannedImage from "@/assets/img/map/ban.png";
+import bannedImage_r from "@/assets/img/map/ban_r.png";
+import bannedImage_b from "@/assets/img/map/ban_b.png";
 import pickedImage_r from "@/assets/img/map/pick_r.png";
 import pickedImage_b from "@/assets/img/map/pick_b.png";
 
