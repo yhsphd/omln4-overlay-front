@@ -190,3 +190,8 @@ export const numToTeamCol = (num) => {
       return "";
   }
 };
+
+export const cssUrl = (url) => {
+  if (!url) return "";
+  return `url('${url}')`;
+};
