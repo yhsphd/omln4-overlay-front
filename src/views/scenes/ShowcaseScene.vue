@@ -55,8 +55,8 @@ import GeneralMappoolHeader from "@/components/GeneralMappoolHeader.vue";
 
 import { useOverlayDataStore } from "@/stores/socket";
 import DimensionInfo from "@/components/DimensionInfo.vue";
-import CurrentMapInfo from "@/components/Showcase/CurrentMapInfo.vue";
-import ShowcaseProgressing from "@/components/Showcase/ShowcaseProgressing.vue";
+import CurrentMapInfo from "@/components/scenes/Showcase/CurrentMapInfo.vue";
+import ShowcaseProgressing from "@/components/scenes/Showcase/ShowcaseProgressing.vue";
 
 const state = useOverlayDataStore();
 

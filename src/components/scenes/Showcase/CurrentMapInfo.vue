@@ -116,7 +116,7 @@ import originalBadgeImage_cn from "@/assets/img/showcase/original_cn.png";
 import originalBadgeImage_en from "@/assets/img/showcase/original_en.png";
 import { cssUrl } from "@/assets/utils";
 
-import StatTable from "@/components/Showcase/StatTable.vue";
+import StatTable from "@/components/scenes/Showcase/StatTable.vue";
 import { useOverlayDataStore } from "@/stores/socket";
 import { computed, ref } from "vue";
 
