@@ -1,6 +1,6 @@
 @import "./base.css";
 
-@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap&family=Nothing+You+Could+Do&family=DM+Serif+Display:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap&family=Covered+By+Your+Grace&family=DM+Serif+Display:ital@0;1&display=swap");
 
 /* Font Classes */
 
@@ -46,8 +46,8 @@
   font-style: normal;
 }
 
-.nothing-you-could-do-regular {
-  font-family: "Nothing You Could Do", cursive;
+.covered-by-your-grace-regular {
+  font-family: "Covered By Your Grace", cursive;
   font-weight: 400;
   font-style: normal;
 }
