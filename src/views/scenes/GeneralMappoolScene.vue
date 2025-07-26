@@ -9,6 +9,7 @@
         :quals="quals"
         :stage="i + 1"
         :key="i"
+        :showcase="true"
       ></MapComponent>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="master-thumbnail-component">
     <div class="thumbImageContainer">
-      <div class="bgToner" :class="{ pick, red: team, blue: !team }"></div>
+      <div class="bgToner" :class="{ picked: pick, red: team, blue: !team }"></div>
       <div
         class="bgImage"
         :class="{ grayscale: ban || pick }"

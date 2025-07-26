@@ -13,7 +13,7 @@
   position: absolute;
   width: 1920px;
   height: 1080px;
-  opacity: 0.2;
+  opacity: 0.8;
 }
 </style>
 

@@ -5,7 +5,7 @@
         <div v-if="hidden" class="hiddenText antihero">SERVING<br />SOON!</div>
         <template v-if="!hidden">
           <div class="artist zen-maru-gothic-regular">{{ artist }}</div>
-          <OverflowText class="title nothing-you-could-do-regular" :key="title">
+          <OverflowText class="title covered-by-your-grace-regular" :key="title">
             {{ title }}
           </OverflowText>
           <div class="diff zen-maru-gothic-regular">
@@ -19,7 +19,7 @@
         :bg="bgUrl"
         :ban="ban"
         :pick="pick"
-        :team="team"
+        :team="banpickTeam"
       ></ThumbnailComponent>
       <CodeBadge class="codeBadge" :code="code"></CodeBadge>
       <StageBadge v-if="quals" class="stageBadge">{{ stage }}</StageBadge>
@@ -28,9 +28,9 @@
         v-if="protect"
         class="protectBadge"
         :class="{ up: scrolledUp, down: !scrolledUp }"
-        :team="team"
+        :team="protectTeam"
       ></ProtectBadge>
-      <AltBanBadge v-if="altBan" class="altBanBadge" :team="team"></AltBanBadge>
+      <AltBanBadge v-if="altBan" class="altBanBadge" :team="banpickTeam"></AltBanBadge>
     </div>
   </div>
 </template>
@@ -127,7 +127,7 @@
 </style>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed } from "vue";
 
 import CodeBadge from "./CodeBadge.vue";
 import StageBadge from "./StageBadge.vue";
@@ -138,6 +138,22 @@ import ProtectBadge from "./ProtectBadge.vue";
 import AltBanBadge from "./AltBanBadge.vue";
 import OverflowText from "../OverflowText.vue";
 
+const props = defineProps({
+  map: Object,
+  quals: Boolean,
+  stage: Number,
+  showcase: { type: Boolean, default: false },
+  compact: { type: Boolean, default: false }, // should we omit stats?
+  win: { type: Boolean, default: false }, // is this map won by either of team?
+  winTeam: { type: Boolean, default: true }, // winning team, true: red, false: blue
+  protect: { type: Boolean, default: false }, // protected?
+  protectTeam: { type: Boolean, default: true },
+  pick: { type: Boolean, default: false }, // picked?
+  ban: { type: Boolean, default: false }, // banned?
+  banpickTeam: { type: Boolean, default: true }, // banned/protected team, true: red, false: blue
+  altBan: { type: Boolean, default: false }, // use badges to indicate ban?
+});
+
 const artist = computed(() => props.map.artist);
 const title = computed(() => props.map.title);
 const diff = computed(() => props.map.difficulty);
@@ -146,20 +162,6 @@ const code = computed(() => props.map.code);
 const stats = computed(() => props.map.stats);
 const bgUrl = computed(() => props.map.background);
 
-const hidden = computed(() => props.map.original); // should we hide info?
-const compact = ref(false); // should we omit stats?
-const win = ref(false); // is this map won by either of team?
-const protect = ref(false); // ------- protected by --------?
-const pick = ref(false); // ---------- picked by -----------?
-const ban = ref(false); // ----------- banned by -----------?
-const team = ref(true); // banned/protected team, true: red, false: blue
-const winTeam = ref(true); // winning team, true: red, false: blue
-const altBan = ref(false); // use badges to indicate ban?
-const scrolledUp = computed(() => hidden.value || compact.value);
-
-const props = defineProps({
-  map: Object,
-  quals: Boolean,
-  stage: Number,
-});
+const hidden = computed(() => props.showcase && props.map.original); // should we hide info?
+const scrolledUp = computed(() => hidden.value || props.compact);
 </script>
