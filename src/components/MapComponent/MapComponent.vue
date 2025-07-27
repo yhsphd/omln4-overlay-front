@@ -139,7 +139,19 @@ import AltBanBadge from "./AltBanBadge.vue";
 import OverflowText from "../OverflowText.vue";
 
 const props = defineProps({
-  map: Object,
+  map: {
+    type: Object,
+    default: () => ({
+      artist: "",
+      title: "",
+      difficulty: "",
+      mapper: "",
+      code: "",
+      stats: { sr: 0, hp: 0, od: 0, length: 0 },
+      background: "",
+      original: false,
+    }),
+  },
   quals: Boolean,
   stage: Number,
   showcase: { type: Boolean, default: false },

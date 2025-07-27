@@ -56,9 +56,17 @@ export function rankDuplicate(arr) {
 }
 
 export function splitCode(code) {
-  const mod = code.match(/[a-zA-Z]+/g)[0];
-  const index = code.match(/\d+/g);
-  return [mod, index !== "" ? parseInt(index) : 1];
+  try {
+    const modMatch = code.match(/[a-zA-Z]+/g);
+    const indexMatch = code.match(/\d+/g);
+    if (!modMatch) return ["", 1];
+    const mod = modMatch[0];
+    const index = indexMatch ? parseInt(indexMatch[0]) : 1;
+    return [mod, index];
+    // eslint-disable-next-line no-unused-vars
+  } catch (e) {
+    return ["", 1];
+  }
 }
 
 export function deepMerge(target, source) {
