@@ -40,9 +40,30 @@ export function teamName2acronym(overlayData, name) {
   return "";
 }
 
+export function teamName2bool(overlayData, mode, name) {
+  let names;
+
+  if (mode === 0) {
+    // Team Name
+    names = [overlayData.teams[0].name, overlayData.teams[1].name];
+  } else if (mode === 1) {
+    // Team Acronym
+    names = [overlayData.teams[0].acronym, overlayData.teams[1].acronym];
+  }
+
+  if (name === names[0]) {
+    return true;
+  } else if (name === names[1]) {
+    return false;
+  }
+  return undefined;
+}
+
 export function getMappool(mappool, code) {
+  if (!code) return {};
+  const searchCode = /\d/.test(code) ? code : code + "1"; // TB -> TB1
   for (let i = 0; i < mappool.length; i++) {
-    if (mappool[i].code === code) {
+    if (mappool[i].code === searchCode) {
       return mappool[i];
     }
   }

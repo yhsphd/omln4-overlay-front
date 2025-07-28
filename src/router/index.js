@@ -3,6 +3,7 @@ import CountdownScene from "../views/scenes/CountdownScene.vue";
 import GeneralMappoolScene from "@/views/scenes/GeneralMappoolScene.vue";
 import ShowcaseScene from "@/views/scenes/ShowcaseScene.vue";
 import BanpickScene from "@/views/scenes/BanpickScene.vue";
+import MatchOverviewScene from "@/views/scenes/MatchOverviewScene.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: "/banpick",
       name: "banpick",
       component: BanpickScene,
+    },
+    {
+      path: "/matchoverview",
+      name: "matchoverview",
+      component: MatchOverviewScene,
     },
   ],
 });
