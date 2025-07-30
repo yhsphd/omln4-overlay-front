@@ -73,3 +73,12 @@
   --color-R: #ff8080;
   --color-B: #809eff;
 }
+
+.switchPage-enter-active {
+  opacity: 0;
+  animation: 500ms fadeIn 500ms;
+}
+
+.switchPage-leave-active {
+  animation: fadeIn 500ms reverse;
+}

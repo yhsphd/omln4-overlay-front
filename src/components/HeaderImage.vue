@@ -88,6 +88,6 @@ const backgroundUrl = computed(() => {
 
 const textBottom = {
   en: "16px",
-  cn: 0,
+  cn: "8px",
 };
 </script>

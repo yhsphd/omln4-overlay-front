@@ -43,19 +43,29 @@ import HeaderImage from "./HeaderImage.vue";
 import VersusComponent from "./NamePlateHeader/VersusComponent.vue";
 import TeamComponent from "./NamePlateHeader/TeamComponent.vue";
 
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { useOverlayDataStore } from "@/stores/socket";
 import { intObjectToArray } from "@/assets/utils";
 
 const state = useOverlayDataStore();
 
-const headerText = {
-  en: "o!mLN4 Match - Overview",
-  cn: "o!mLN4 Match - Overview",
-};
-
-const lang = ref("en");
-const inMatch = ref(true); // true: during match, false: pre-match
+defineProps({
+  headerText: {
+    type: Object,
+    default: () => ({
+      en: "o!mLN4 Match - Overview",
+      cn: "o!mLN4 Match - Overview",
+    }),
+  },
+  lang: {
+    type: String,
+    default: "en",
+  },
+  inMatch: {
+    type: Boolean,
+    default: true, // true: during match, false: pre-match
+  },
+});
 
 const teams = computed(() => intObjectToArray(state.data?.teams));
 const slots = computed(() => (state.data?.lobby?.bo + 1) / 2);
