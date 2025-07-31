@@ -41,7 +41,7 @@
   bottom: 0;
   font-size: 150px;
   line-height: 110px;
-  opacity: 0.74;
+  opacity: 0.5;
 }
 .score.red {
   color: #c02230;
