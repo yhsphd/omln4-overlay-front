@@ -158,11 +158,11 @@ export function intObjectToArray(obj) {
     return [];
   }
 
-  const elems = Math.max(...Object.keys(obj).map((x) => parseInt(x)));
+  const elems = Math.max(...Object.keys(obj).map((x) => Number(x)));
   const res = new Array(elems + 1);
 
-  for (let key in Object.keys(obj)) {
-    res[key] = obj[key];
+  for (const key of Object.keys(obj)) {
+    res[parseInt(key)] = obj[key];
   }
 
   return res;
