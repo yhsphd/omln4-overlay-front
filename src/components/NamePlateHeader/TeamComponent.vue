@@ -4,10 +4,7 @@
     <div class="pfp" :style="{ backgroundImage: cssUrl(`https://a.ppy.sh/${team.players[0].id}`) }">
       <div class="seedBadge zen-maru-gothic-black">{{ team.seed }}</div>
     </div>
-    <img
-      class="flag"
-      :src="`https://assets.ppy.sh/old-flags/${team.players[0].country_code}.png`"
-    />
+    <img class="flag" :src="`https://assets.ppy.sh/old-flags/${team.flag}.png`" />
     <div class="teamInfo">
       <div class="nick">{{ team.players[0].nick }}</div>
       <div class="sub zen-maru-gothic-black">PLAYER {{ isRed ? 1 : 2 }}</div>
