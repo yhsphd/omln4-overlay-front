@@ -7,6 +7,7 @@ import MatchOverviewScene from "@/views/scenes/MatchOverviewScene.vue";
 import GameplayScene from "@/views/scenes/GameplayScene.vue";
 import MatchupScene from "@/views/scenes/MatchupScene.vue";
 import QualsResultsScene from "@/views/scenes/QualsResultsScene.vue";
+import MatchSchedulesScene from "@/views/scenes/MatchSchedulesScene.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +51,11 @@ const router = createRouter({
       path: "/qresults",
       name: "qresults",
       component: QualsResultsScene,
+    },
+    {
+      path: "/schedules",
+      name: "schedules",
+      component: MatchSchedulesScene,
     },
   ],
 });
