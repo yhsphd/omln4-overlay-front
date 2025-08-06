@@ -276,3 +276,11 @@ export const recentMatches = (overlayData, now, n) => {
     .sort((a, b) => new Date(b.schedule) - new Date(a.schedule))
     .slice(0, n);
 };
+
+export const convertOrdinalNumber = (n) => {
+  n = parseInt(n, 10);
+  const suffix = ["th", "st", "nd", "rd"];
+  const mod100 = n % 100;
+
+  return n + (suffix[(mod100 - 20) % 10] || suffix[mod100] || suffix[0]);
+};

@@ -9,6 +9,7 @@ import MatchupScene from "@/views/scenes/MatchupScene.vue";
 import QualsResultsScene from "@/views/scenes/QualsResultsScene.vue";
 import MatchSchedulesScene from "@/views/scenes/MatchSchedulesScene.vue";
 import BracketsScene from "@/views/scenes/BracketsScene.vue";
+import OiiResultsScene from "@/views/scenes/OiiResultsScene.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -62,6 +63,11 @@ const router = createRouter({
       path: "/brackets",
       name: "brackets",
       component: BracketsScene,
+    },
+    {
+      path: "/oiiresults",
+      name: "oiiresults",
+      component: OiiResultsScene,
     },
   ],
 });
