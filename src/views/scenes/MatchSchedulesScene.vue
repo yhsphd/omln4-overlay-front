@@ -7,7 +7,7 @@
 
     <div class="schedulesContainer">
       <MatchComponent
-        v-for="match in incoming4Matches"
+        v-for="match in upcoming4Matches"
         :key="match.code"
         :match="match"
       ></MatchComponent>
@@ -39,7 +39,7 @@
 </style>
 
 <script setup>
-import { intObjectToArray } from "@/assets/utils";
+import { upcomingMatches } from "@/assets/utils";
 import HeaderImage from "@/components/HeaderImage.vue";
 import CountdownWheel from "@/components/scenes/Countdown/CountdownWheel.vue";
 import CowntdownNowPlaying from "@/components/scenes/Countdown/CowntdownNowPlaying.vue";
@@ -61,35 +61,5 @@ onUnmounted(() => {
   clearInterval(timer);
 });
 
-const matches = computed(() => intObjectToArray(state.data?.extended?.matches));
-const currentBracketMatches = computed(() => {
-  const currentBracket = state.data?.bracket;
-  return matches.value.filter((x) => x.bracket === currentBracket);
-});
-
-const bo = computed(() => {
-  const currentBracket = state.data?.bracket;
-  return intObjectToArray(state.data?.brackets)?.find((b) => b.name === currentBracket)?.bo || "7";
-});
-
-const upcomingMatches = (n) => {
-  return currentBracketMatches.value
-    .filter((match) => {
-      const matchDate = new Date(match.schedule);
-      const result = intObjectToArray(match.result) || [0, 0];
-      const targetScore = Math.ceil(parseInt(bo.value) / 2);
-
-      // Include if -1 in result and future date
-      if (result.includes(-1)) {
-        return matchDate > now.value;
-      }
-
-      // Include if not reached target score yet
-      const maxScore = Math.max(...result);
-      return maxScore < targetScore;
-    })
-    .sort((a, b) => new Date(a.schedule) - new Date(b.schedule))
-    .slice(0, n);
-};
-const incoming4Matches = computed(() => upcomingMatches(4));
+const upcoming4Matches = computed(() => upcomingMatches(state.data, now.value, 4));
 </script>

@@ -224,3 +224,55 @@ export const cssUrl = (url) => {
   if (!url) return "";
   return `url('${url}')`;
 };
+
+export const upcomingMatches = (overlayData, now, n) => {
+  const matches = intObjectToArray(overlayData?.extended?.matches);
+  if (!matches) return [];
+
+  const currentBracket = overlayData?.bracket;
+  const bo =
+    intObjectToArray(overlayData?.brackets)?.find((b) => b.name === currentBracket)?.bo || "7";
+
+  return matches
+    .filter((match) => match.bracket === currentBracket)
+    .filter((match) => {
+      const matchDate = new Date(match.schedule);
+      const result = intObjectToArray(match.result) || [0, 0];
+      const targetScore = Math.ceil(parseInt(bo) / 2);
+
+      // Include if -1 in result and future date
+      if (result.includes(-1)) {
+        return matchDate > now;
+      }
+
+      // Include if not reached target score yet
+      const maxScore = Math.max(...result);
+      return maxScore < targetScore;
+    })
+    .sort((a, b) => new Date(a.schedule) - new Date(b.schedule))
+    .slice(0, n);
+};
+
+export const recentMatches = (overlayData, now, n) => {
+  const matches = intObjectToArray(overlayData?.extended?.matches);
+  if (!matches) return [];
+
+  const currentBracket = overlayData?.bracket;
+  const bo =
+    intObjectToArray(overlayData?.brackets)?.find((b) => b.name === currentBracket)?.bo || "7";
+
+  return matches
+    .filter((match) => match.bracket === currentBracket)
+    .filter((match) => {
+      const matchDate = new Date(match.schedule);
+      const result = intObjectToArray(match.result) || [0, 0];
+      const targetScore = Math.ceil(parseInt(bo) / 2);
+
+      const isFinishedByScore = Math.max(...result) >= targetScore;
+      const isForfeitedAndPast = result.includes(-1) && matchDate <= now;
+
+      return isFinishedByScore || isForfeitedAndPast;
+    })
+    .sort((a, b) => new Date(b.schedule) - new Date(a.schedule))
+    .slice(0, n);
+};
