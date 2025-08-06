@@ -72,6 +72,10 @@
 
   --color-R: #ff8080;
   --color-B: #809eff;
+
+  --color-R-strong: #c02230;
+  --color-B-strong: #1c4ade;
+  --color-Y-strong: #FFe17b;
 }
 
 .switchPage-enter-active {

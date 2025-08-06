@@ -68,7 +68,7 @@ defineProps({
 });
 
 const teams = computed(() => intObjectToArray(state.data?.teams));
-const slots = computed(() => (state.data?.lobby?.bo + 1) / 2);
+const slots = computed(() => Math.floor((state.data?.lobby?.bo + 1) / 2));
 const points = computed(() => intObjectToArray(state.data?.lobby?.set_scores));
 const poolName = computed(() => state.data?.mappool_name);
 </script>
