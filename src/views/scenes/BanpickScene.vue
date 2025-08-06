@@ -19,8 +19,9 @@
       ></MapComponent>
     </div>
 
+    <ChatBox class="chatBox"></ChatBox>
+
     <NextOrder class="nextOrder" :class="{ show: showNextOrder }" :lang="lang"></NextOrder>
-    <!-- TODO: Lobby Chat Box -->
   </div>
 </template>
 
@@ -33,6 +34,8 @@
   width: 100%;
   height: 800px;
   display: flex;
+  align-content: flex-start;
+  gap: -100px 0;
   flex-wrap: wrap;
   position: absolute;
   top: 200px;
@@ -42,6 +45,16 @@
 
 .map {
   margin: 16px 20px 16px 20px;
+}
+
+.chatBox {
+  position: absolute;
+  width: 1020px;
+  height: 255px;
+  left: 851px;
+  top: 785px;
+  background: rgba(0, 0, 0, 0.85);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .nextOrder {
@@ -63,6 +76,7 @@ import { computed, ref, watch } from "vue";
 import { intObjectToArray } from "@/assets/utils";
 import { useOverlayDataStore } from "@/stores/socket";
 import NextOrder from "@/components/scenes/Banpick/NextOrder.vue";
+import ChatBox from "@/components/scenes/Banpick/ChatBox.vue";
 
 const state = useOverlayDataStore();
 
