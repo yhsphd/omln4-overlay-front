@@ -1,6 +1,6 @@
 <template>
   <div class="scene master-matchup-scene">
-    <NamePlateHeader :in-match="false"></NamePlateHeader>
+    <NamePlateHeader :in-match="false" :lang="lang"></NamePlateHeader>
 
     <QualifierSeeds :teams="teams" :qData="qData"></QualifierSeeds>
 
@@ -59,7 +59,12 @@
       </div>
     </div>
 
-    <HeaderImage class="round absolute-center-horizontal" img="rounds/f"></HeaderImage>
+    <HeaderImage
+      class="round absolute-center-horizontal"
+      :lang="lang"
+      :text="headerText"
+      :img="`rounds/${mappoolName.toLowerCase()}`"
+    ></HeaderImage>
   </div>
 </template>
 
@@ -106,11 +111,19 @@ import { intObjectToArray } from "@/assets/utils";
 
 const state = useOverlayDataStore();
 
+const lang = computed(() => state.data?.lang);
+
 const HISTORY_PAGE_TURN_INTERVAL = 10000;
+
+const headerText = {
+  en: "o!mLN4 Match - Match-up Details",
+  cn: "o!mLN4 Match - Match-up Details",
+};
 
 const teams = computed(() => intObjectToArray(state.data?.teams));
 const qData = computed(() => intObjectToArray(state.data?.extended?.quals));
 const matches = computed(() => intObjectToArray(state?.data.extended?.matches));
+const mappoolName = computed(() => state.data?.mappool_name);
 
 const matchHistories = computed(() => {
   if (!teams.value || !matches.value || teams.value.length < 2) return [[], []];

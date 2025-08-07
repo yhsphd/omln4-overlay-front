@@ -150,6 +150,8 @@ const blueClientBox = ref(null);
 
 const state = useOverlayDataStore();
 
+const lang = computed(() => state.data?.lang);
+
 const liveScoresBak = ref([0, 0]);
 const liveScores = computed(() => {
   if (liveScores.value) {
@@ -180,7 +182,6 @@ const diffPercentages = computed(() => {
 
 const winning = computed(() => (diff.value > 0 ? "red" : diff.value < 0 ? "blue" : ""));
 
-const lang = ref("en");
 const headerText = {
   en: "o!mLN4 Match - Gameplay",
   cn: "o!mLN4 Match - Gameplay",

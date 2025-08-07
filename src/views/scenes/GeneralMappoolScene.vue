@@ -1,6 +1,11 @@
 <template>
   <div class="scene master-general-mappool-scene">
-    <GeneralMappoolHeader class="header" :pool-name="mappoolName"></GeneralMappoolHeader>
+    <HeaderImage
+      class="header"
+      :text="headerText"
+      :lang="lang"
+      :img="`rounds/${mappoolName.toLowerCase()}`"
+    ></HeaderImage>
     <div class="mapsContainer">
       <MapComponent
         class="map"
@@ -40,16 +45,23 @@
 </style>
 
 <script setup>
-import { computed } from "vue";
+import MapComponent from "@/components/MapComponent/MapComponent.vue";
+import HeaderImage from "@/components/HeaderImage.vue";
+
+import { computed, ref } from "vue";
 import { intObjectToArray } from "@/assets/utils";
 import { useOverlayDataStore } from "@/stores/socket";
 
-import GeneralMappoolHeader from "@/components/GeneralMappoolHeader.vue";
-import MapComponent from "@/components/MapComponent/MapComponent.vue";
-
 const state = useOverlayDataStore();
+
+const lang = computed(() => state.data?.lang);
 
 const mappoolName = computed(() => state.data?.mappool_name);
 const mappool = computed(() => intObjectToArray(state.data?.mappool));
 const quals = computed(() => mappoolName.value === "Q");
+
+const headerText = ref({
+  en: "o!mLN4 Mappool Showcase - Overview",
+  cn: "o!mLN4 图池展示 - 总览",
+});
 </script>

@@ -1,6 +1,10 @@
 <template>
   <div class="scene master-match-schedule-scene">
-    <HeaderImage img="match_schedule" class="header absolute-center-horizontal"></HeaderImage>
+    <HeaderImage
+      img="match_schedule"
+      class="header absolute-center-horizontal"
+      :lang="lang"
+    ></HeaderImage>
 
     <CowntdownNowPlaying class="np"></CowntdownNowPlaying>
     <CountdownWheel class="clock" size="720px"></CountdownWheel>
@@ -48,6 +52,8 @@ import { useOverlayDataStore } from "@/stores/socket";
 import { computed, ref, onMounted, onUnmounted } from "vue";
 
 const state = useOverlayDataStore();
+
+const lang = computed(() => state.data?.lang);
 const now = ref(new Date());
 let timer;
 

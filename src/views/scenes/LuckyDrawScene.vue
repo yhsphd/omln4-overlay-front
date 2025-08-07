@@ -1,6 +1,10 @@
 <template>
   <div class="scene master-lucky-draw-scene">
-    <HeaderImage class="absolute-center-horizontal header" img="lucky_draw"></HeaderImage>
+    <HeaderImage
+      class="absolute-center-horizontal header"
+      img="lucky_draw"
+      :lang="lang"
+    ></HeaderImage>
 
     <div class="content absolute-center-horizontal horizontal-box">
       <div class="captureArea" ref="captureAreaRef">
@@ -108,6 +112,8 @@ import { useOverlayDataStore } from "@/stores/socket";
 import { computed, ref } from "vue";
 
 const state = useOverlayDataStore();
+
+const lang = computed(() => state.data?.lang);
 
 const captureAreaRef = ref(null);
 const page = ref(0);

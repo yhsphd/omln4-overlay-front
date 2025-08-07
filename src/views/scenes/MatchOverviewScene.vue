@@ -1,6 +1,6 @@
 <template>
   <div class="scene master-match-overview-scene">
-    <NamePlateHeader></NamePlateHeader>
+    <NamePlateHeader :lang="lang"></NamePlateHeader>
 
     <MapComponent class="red ban" v-bind="outerBinds.redBan"></MapComponent>
     <MapComponent class="red protect" v-bind="outerBinds.redProtect"></MapComponent>
@@ -150,12 +150,14 @@ import blueKanji from "@/assets/img/blueKanji.png";
 import MapComponent from "@/components/MapComponent/MapComponent.vue";
 import NamePlateHeader from "@/components/NamePlateHeader.vue";
 
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { useOverlayDataStore } from "@/stores/socket";
 import { getMappool, intObjectToArray, teamName2bool } from "@/assets/utils";
 import HeaderImage from "@/components/HeaderImage.vue";
 
 const state = useOverlayDataStore();
+
+const lang = computed(() => state.data?.lang);
 
 const mappool = computed(() => intObjectToArray(state.data?.mappool));
 const preMatch = computed(() => state.data?.progress?.pre_match);
@@ -245,6 +247,4 @@ const matchWinTeam = computed(() => {
     team: teams[Number(!winningTeamBool)],
   };
 });
-
-const lang = ref("en");
 </script>

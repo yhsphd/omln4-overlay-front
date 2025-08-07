@@ -1,8 +1,16 @@
 <template>
   <div class="scene master-oii-results-scene">
     <HeaderImage class="header" img="challenge_results" :lang="lang"></HeaderImage>
-    <img v-if="lang === 'en'" class="originalHeader" src="@/assets/img/showcase/original_en.png" />
-    <img v-if="lang === 'cn'" class="originalHeader" src="@/assets/img/showcase/original_cn.png" />
+    <img
+      v-if="lang === 'en'"
+      class="originalHeader en"
+      src="@/assets/img/showcase/original_en.png"
+    />
+    <img
+      v-if="lang === 'cn'"
+      class="originalHeader cn"
+      src="@/assets/img/showcase/original_cn.png"
+    />
 
     <Transition name="switchPage" mode="out-in">
       <div class="mainBox absolute-center-horizontal horizontal-box" :key="page">
@@ -57,11 +65,18 @@
   right: 350px;
   top: 24px;
 }
-.originalHeader {
+.originalHeader.en {
   position: absolute;
   top: 90px;
   left: 680px;
   height: 120px;
+  transform: translate(-50%, -50%);
+}
+.originalHeader.cn {
+  position: absolute;
+  top: 110px;
+  left: 700px;
+  height: 160px;
   transform: translate(-50%, -50%);
 }
 
@@ -178,6 +193,8 @@ import { computed, ref, watchEffect } from "vue";
 
 const state = useOverlayDataStore();
 
+const lang = computed(() => state.data?.lang);
+
 const page = ref(0);
 
 const oiiResults = computed(() => state.data?.extended?.oiiResults);
@@ -191,6 +208,4 @@ watchEffect(async () => {
   const response = await fetch(`${rootUrl}/api/osu/beatmap?id=${currentMapId.value}`);
   currentMapInfo.value = await response.json();
 });
-
-const lang = ref("en");
 </script>

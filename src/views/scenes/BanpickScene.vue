@@ -1,7 +1,6 @@
 <template>
   <div class="scene master-banpick-scene">
-    <!-- <TestOverlayScene></TestOverlayScene> -->
-    <NamePlateHeader class="header"></NamePlateHeader>
+    <NamePlateHeader class="header" :lang="lang"></NamePlateHeader>
 
     <div class="mapsContainer">
       <MapComponent
@@ -80,6 +79,8 @@ import ChatBox from "@/components/scenes/Banpick/ChatBox.vue";
 
 const state = useOverlayDataStore();
 
+const lang = computed(() => state.data?.lang);
+
 const mappool = computed(() => intObjectToArray(state.data?.mappool));
 const progress = computed(() => state.data?.progress);
 const codeToStatus = computed(() => {
@@ -144,6 +145,5 @@ watch(pickCount, (newCount, oldCount) => {
   }
 });
 
-const lang = ref("en");
 const NEXTORDER_TIME = 3000;
 </script>

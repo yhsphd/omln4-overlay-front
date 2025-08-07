@@ -1,6 +1,6 @@
 <template>
   <div class="scene master-showcase-scene">
-    <GeneralMappoolHeader class="header" :pool-name="mappoolName"></GeneralMappoolHeader>
+    <HeaderImage class="header" :img="`rounds/${mappoolName.toLowerCase()}`"></HeaderImage>
 
     <div class="mainContainer horizontal-box absolute-center-horizontal">
       <div class="showcaseClient" ref="showcaseClient_ref">
@@ -49,14 +49,13 @@
 </style>
 
 <script setup>
-import { computed, ref } from "vue";
-
-import GeneralMappoolHeader from "@/components/GeneralMappoolHeader.vue";
-
-import { useOverlayDataStore } from "@/stores/socket";
 import DimensionInfo from "@/components/DimensionInfo.vue";
 import CurrentMapInfo from "@/components/scenes/Showcase/CurrentMapInfo.vue";
 import ShowcaseProgressing from "@/components/scenes/Showcase/ShowcaseProgressing.vue";
+import HeaderImage from "@/components/HeaderImage.vue";
+
+import { computed, ref } from "vue";
+import { useOverlayDataStore } from "@/stores/socket";
 
 const state = useOverlayDataStore();
 

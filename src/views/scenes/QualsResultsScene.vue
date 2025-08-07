@@ -1,6 +1,10 @@
 <template>
   <div class="scene master-quals-results-scene">
-    <HeaderImage class="header absolute-center-horizontal" img="qualifier_results"></HeaderImage>
+    <HeaderImage
+      class="header absolute-center-horizontal"
+      :lang="lang"
+      img="qualifier_results"
+    ></HeaderImage>
 
     <Transition name="switchPage" mode="out-in">
       <div class="contents horizontal-box absolute-center-horizontal" :key="playerIndex">
@@ -65,6 +69,8 @@ import { intObjectToArray } from "@/assets/utils";
 import { useOverlayDataStore } from "@/stores/socket";
 
 const state = useOverlayDataStore();
+
+const lang = computed(() => state.data?.lang);
 
 const playerIndex = ref(0);
 const qualsData = computed(() => intObjectToArray(state.data?.extended?.quals));

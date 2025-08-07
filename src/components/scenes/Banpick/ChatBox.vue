@@ -65,7 +65,7 @@ const chatDataLen = ref(0);
 onUpdated(() => {
   if (chatDataLen.value !== chatData.value.length) {
     chatDataLen.value = chatData.value.length;
-    masterElem.value.lastElementChild.scrollIntoView({ behavior: "smooth" });
+    masterElem.value.lastElementChild?.scrollIntoView({ behavior: "smooth" });
   }
 });
 

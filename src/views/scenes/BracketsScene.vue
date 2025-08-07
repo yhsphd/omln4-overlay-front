@@ -1,6 +1,10 @@
 <template>
   <div class="scene master-brackets-scene">
-    <HeaderImage img="tournament_bracket" class="header absolute-center-horizontal"></HeaderImage>
+    <HeaderImage
+      img="tournament_bracket"
+      class="header absolute-center-horizontal"
+      :lang="lang"
+    ></HeaderImage>
 
     <div class="leftBox">
       <div class="upcoming">
@@ -79,6 +83,8 @@ import { computed, onMounted, onUnmounted, ref } from "vue";
 import { useOverlayDataStore } from "@/stores/socket";
 
 const state = useOverlayDataStore();
+
+const lang = computed(() => state.data?.lang);
 
 const now = ref(new Date());
 let timer;
