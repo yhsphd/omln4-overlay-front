@@ -10,6 +10,7 @@ import QualsResultsScene from "@/views/scenes/QualsResultsScene.vue";
 import MatchSchedulesScene from "@/views/scenes/MatchSchedulesScene.vue";
 import BracketsScene from "@/views/scenes/BracketsScene.vue";
 import OiiResultsScene from "@/views/scenes/OiiResultsScene.vue";
+import LuckyDrawScene from "@/views/scenes/LuckyDrawScene.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -68,6 +69,11 @@ const router = createRouter({
       path: "/oiiresults",
       name: "oiiresults",
       component: OiiResultsScene,
+    },
+    {
+      path: "/luckydraw",
+      name: "luckydraw",
+      component: LuckyDrawScene,
     },
   ],
 });
