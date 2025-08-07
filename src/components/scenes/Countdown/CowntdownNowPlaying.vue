@@ -22,7 +22,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(50% 50% at 50% 50%, #000000 0%, rgba(0, 0, 0, 0) 100%);
+  background: radial-gradient(50% 50% at 50% 50%, black 0%, rgba(0, 0, 0, 0) 100%);
 }
 .header {
   font-size: 24px;

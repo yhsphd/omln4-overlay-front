@@ -47,7 +47,7 @@
   width: 800px;
   height: 225px;
 
-  background: radial-gradient(50% 50% at 50% 50%, #000000 0%, rgba(0, 0, 0, 0) 100%);
+  background: radial-gradient(50% 50% at 50% 50%, black 0%, rgba(0, 0, 0, 0) 100%);
 }
 </style>
 

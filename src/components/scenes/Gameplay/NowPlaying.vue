@@ -44,7 +44,7 @@
   width: 220px;
   height: 124px;
   rotate: -5deg;
-  border: 5px solid #ffffff;
+  border: 5px solid white;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 

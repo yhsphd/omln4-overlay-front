@@ -51,7 +51,7 @@
 
 .songInfo {
   height: 108px;
-  background-color: #c02230;
+  background-color: var(--color-R);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -66,7 +66,7 @@
 }
 
 .diff > .bracket {
-  color: #c02230;
+  color: var(--color-R);
 }
 
 .mapperReplayerInfo {
@@ -74,7 +74,7 @@
 }
 
 .mapperReplayerInfo > .divider {
-  color: #c02230;
+  color: var(--color-R);
   margin: 0 5px;
 }
 

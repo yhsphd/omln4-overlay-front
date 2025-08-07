@@ -4,7 +4,9 @@
     <div v-for="item in chatData" :key="item">
       <div class="horizontal-box chat zen-maru-gothic-regular">
         <div class="timestamp">{{ formatTime(item[0]) }}</div>
-        <div class="nick zen-maru-gothic-black" :style="{ color: nickCol(item[1]) }">{{ item[1] }}</div>
+        <div class="nick zen-maru-gothic-black" :style="{ color: nickCol(item[1]) }">
+          {{ item[1] }}
+        </div>
         <div class="cell message">{{ item[2] }}</div>
       </div>
     </div>
@@ -73,10 +75,10 @@ const teamNicks = computed(() => {
 });
 const nickCol = (nick) => {
   if (teamNicks.value?.[0]?.includes(nick)) {
-    return "var(--color-R-strong)";
+    return "var(--color-R)";
   } else if (teamNicks.value?.[1]?.includes(nick)) {
-    return "var(--color-B-strong)";
+    return "var(--color-B)";
   }
-  return "var(--color-Y-strong)"; // Fallback for referees and banchobot
+  return "var(--color-Y)"; // Fallback for referees and banchobot
 };
 </script>

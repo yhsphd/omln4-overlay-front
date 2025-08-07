@@ -36,7 +36,7 @@
   width: 450px;
   height: 840px;
   text-align: center;
-  background-color: #191919;
+  background-color: var(--color-BG);
   position: absolute;
   left: 60px;
   top: 180px;
@@ -51,11 +51,11 @@
   line-height: 72px;
 }
 .upcoming > .boxHeader {
-  background-color: #c02230;
+  background-color: var(--color-R);
 }
 .history > .boxHeader {
   color: black;
-  background-color: #ffe17b;
+  background-color: var(--color-Y);
 }
 
 .bracketsBox {
@@ -66,7 +66,7 @@
   left: 540px;
   top: 180px;
   background: rgba(24, 24, 24, 0.75);
-  border: 10px solid #000000;
+  border: 10px solid black;
 }
 </style>
 

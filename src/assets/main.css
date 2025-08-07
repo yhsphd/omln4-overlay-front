@@ -70,12 +70,11 @@
   --color-DE: #ffe17b;
   --color-TB: #ffffff;
 
-  --color-R: #ff8080;
-  --color-B: #809eff;
+  --color-R: #c02230;
+  --color-B: #1c4ade;
+  --color-Y: #ffe17b;
 
-  --color-R-strong: #c02230;
-  --color-B-strong: #1c4ade;
-  --color-Y-strong: #FFe17b;
+  --color-BG: #191919;
 }
 
 .switchPage-enter-active {

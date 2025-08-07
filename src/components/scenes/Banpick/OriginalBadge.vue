@@ -44,11 +44,11 @@
 }
 
 .red {
-  background-color: #c02230;
+  background-color: var(--color-R);
 }
 
 .blue {
-  background-color: #001e7d;
+  background-color: #001e7d; /* Use darker blue for readability */
 }
 </style>
 

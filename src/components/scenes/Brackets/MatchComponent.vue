@@ -43,7 +43,7 @@
   font-size: 32px;
 }
 .win {
-  color: #ffe17b;
+  color: var(--color-Y);
 }
 
 .flag {
@@ -62,7 +62,7 @@
 }
 .red > .nick {
   left: 110px;
-  color: #c02230;
+  color: var(--color-R);
 }
 .blue {
   height: 100%;
@@ -73,7 +73,7 @@
 }
 .blue > .nick {
   right: 110px;
-  color: #1c4ade;
+  color: var(--color-B);
 }
 </style>
 

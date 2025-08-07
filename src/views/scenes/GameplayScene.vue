@@ -65,11 +65,11 @@
   background-color: transparent;
 }
 .clientBox.red .clientBoxBorder {
-  background-color: #c02230;
+  background-color: var(--color-R);
   left: 0;
 }
 .clientBox.blue .clientBoxBorder {
-  background-color: #1c4ade;
+  background-color: var(--color-B);
   right: 0;
 }
 
@@ -83,11 +83,11 @@
   text-align: center;
 }
 .clientBox.red .diff {
-  background-color: #c02230;
+  background-color: var(--color-R);
   right: 0;
 }
 .clientBox.blue .diff {
-  background-color: #1c4ade;
+  background-color: var(--color-B);
   left: 0;
 }
 .hidden {

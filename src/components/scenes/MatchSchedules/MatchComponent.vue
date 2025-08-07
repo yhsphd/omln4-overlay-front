@@ -43,7 +43,7 @@
   position: relative;
   width: 1020px;
   height: 200px;
-  background-color: #191919;
+  background-color: var(--color-BG);
   box-sizing: border-box;
   border: solid 1px black;
 }
@@ -68,11 +68,11 @@
 }
 .red .score {
   right: -50px;
-  background-color: #c02230;
+  background-color: var(--color-R);
 }
 .blue .score {
   left: -50px;
-  background-color: #1c4ade;
+  background-color: var(--color-B);
 }
 .score.ff {
   font-size: 48px;
@@ -95,7 +95,7 @@
 
 .vs {
   font-size: 64px;
-  color: #ffe17b;
+  color: var(--color-Y);
 }
 
 .nick {

@@ -30,11 +30,11 @@
 }
 
 .red .rankNumber {
-  color: #c02230;
+  color: var(--color-R);
 }
 
 .blue .rankNumber {
-  color: #1c4ade;
+  color: var(--color-B);
 }
 
 .rankContainer {

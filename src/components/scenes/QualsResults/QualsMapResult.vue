@@ -34,7 +34,7 @@
 .wrapper {
   width: 100%;
   height: 120px;
-  background-color: #191919;
+  background-color: var(--color-BG);
   align-items: center;
   box-sizing: border-box;
   border: solid 1px black;
@@ -50,7 +50,7 @@
 .bgGradient {
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgba(25, 25, 25, 0) 0%, #191919 100%);
+  background: linear-gradient(90deg, rgba(25, 25, 25, 0) 0%, var(--color-BG) 100%);
 }
 
 .titleArtist {
@@ -83,7 +83,7 @@
 .score {
   font-size: 64px;
   line-height: 64px;
-  color: #ffe17b;
+  color: var(--color-Y);
 }
 .acc {
   font-size: 20px;

@@ -71,7 +71,7 @@
   height: 830px;
   top: 190px;
   border: 10px solid #810c06;
-  background-color: #191919;
+  background-color: var(--color-BG);
 }
 
 .mapInfo {
@@ -98,7 +98,7 @@
 }
 .title {
   height: 120px;
-  background-color: #c02230;
+  background-color: var(--color-R);
 }
 .artist {
   height: 60px;
@@ -123,7 +123,7 @@
 .pfpGradient {
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgba(25, 25, 25, 0) 0%, #191919 100%);
+  background: linear-gradient(90deg, rgba(25, 25, 25, 0) 0%, var(--color-BG) 100%);
 }
 .rank {
   margin-left: 20px;

@@ -46,11 +46,11 @@
 }
 
 .red .pfp {
-  border: 5px solid #c02230;
+  border: 5px solid var(--color-R);
 }
 
 .blue .pfp {
-  border: 5px solid #1c4ade;
+  border: 5px solid var(--color-B);
 }
 
 .seedBadge {
@@ -130,7 +130,7 @@
 }
 
 .star.enabled {
-  background-color: #ffe17b;
+  background-color: var(--color-Y);
 }
 </style>
 

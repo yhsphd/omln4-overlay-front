@@ -31,7 +31,7 @@
   width: 214px;
   height: 56px;
   font-size: 40px;
-  background-color: #c02230;
+  background-color: var(--color-R);
   border-radius: 10px;
   text-align: center;
 }

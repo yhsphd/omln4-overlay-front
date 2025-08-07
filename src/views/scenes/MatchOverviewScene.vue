@@ -131,10 +131,10 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .pfp.blue {
-  border: 5px solid #1c4ade;
+  border: 5px solid var(--color-B);
 }
 .pfp.red {
-  border: 5px solid #c02230;
+  border: 5px solid var(--color-R);
 }
 
 .colorKanji {

@@ -48,11 +48,11 @@
 }
 
 .bgToner.picked.red {
-  background-color: var(--color-R);
+  background-color: #ff8080;
 }
 
 .bgToner.picked.blue {
-  background-color: var(--color-B);
+  background-color: #809eff;
 }
 
 .bannedImg {

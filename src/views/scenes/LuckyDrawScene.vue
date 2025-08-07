@@ -53,7 +53,7 @@
   height: 768px;
   box-sizing: border-box;
   padding: 50px 500px 0 50px;
-  background-color: #191919;
+  background-color: var(--color-BG);
 }
 .winnersBox {
   width: 460px;
@@ -63,7 +63,7 @@
 }
 .boxHeader {
   text-align: center;
-  background-color: var(--color-R-strong);
+  background-color: var(--color-R);
   height: 108px;
   font-size: 64px;
   line-height: 108px;

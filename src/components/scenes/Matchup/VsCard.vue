@@ -21,7 +21,7 @@
   width: 275px;
   height: 150px;
   background: rgba(9, 9, 9, 0.8);
-  border: 5px solid #000000;
+  border: 5px solid black;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 }
@@ -44,10 +44,10 @@
   opacity: 0.5;
 }
 .score.red {
-  color: #c02230;
+  color: var(--color-R);
 }
 .score.blue {
-  color: #1c4ade;
+  color: var(--color-B);
 }
 
 .versus {

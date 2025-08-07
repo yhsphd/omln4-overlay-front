@@ -44,7 +44,7 @@
 .master-player-card {
   width: 420px;
   height: 840px;
-  background-color: #191919;
+  background-color: var(--color-BG);
 }
 
 .flagWrapper {
@@ -54,7 +54,7 @@
 
 .pfpWrapper {
   height: 535px;
-  background-color: #c02230;
+  background-color: var(--color-R);
   text-align: center;
 }
 .nick {
@@ -73,7 +73,7 @@
 
 .key {
   font-size: 24px;
-  color: #ffe17b;
+  color: var(--color-Y);
   margin-top: 24px;
   margin-left: 16px;
 }
