@@ -3,9 +3,9 @@
     <div class="horizontal-box timeLeft">
       <div
         class="digit"
-        v-for="digit in timeLeftString"
+        v-for="(digit, i) in timeLeftString"
         :style="{ width: digit === ':' ? '15%' : '20%' }"
-        :key="digit + '' + timeLeftString"
+        :key="i"
       >
         {{ digit }}
       </div>

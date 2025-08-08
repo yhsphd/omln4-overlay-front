@@ -182,8 +182,8 @@ const diffPercentages = computed(() => {
 
 const winning = computed(() => (diff.value > 0 ? "red" : diff.value < 0 ? "blue" : ""));
 
-const headerText = {
+const headerText = ref({
   en: "o!mLN4 Match - Gameplay",
   cn: "o!mLN4 Match - Gameplay",
-};
+});
 </script>

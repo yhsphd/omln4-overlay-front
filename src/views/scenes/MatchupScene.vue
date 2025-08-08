@@ -115,10 +115,10 @@ const lang = computed(() => state.data?.lang);
 
 const HISTORY_PAGE_TURN_INTERVAL = 10000;
 
-const headerText = {
+const headerText = ref({
   en: "o!mLN4 Match - Match-up Details",
   cn: "o!mLN4 Match - Match-up Details",
-};
+});
 
 const teams = computed(() => intObjectToArray(state.data?.teams));
 const qData = computed(() => intObjectToArray(state.data?.extended?.quals));

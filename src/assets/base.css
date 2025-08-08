@@ -18,7 +18,7 @@
   color: white;
 
   /* comment below out on production */
-  background-image: url("img/testbg.png");
+  /* background-image: url("img/testbg.png"); */
   background-size: cover;
 }
 

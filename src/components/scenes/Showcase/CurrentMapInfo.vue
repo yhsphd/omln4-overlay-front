@@ -118,13 +118,13 @@ import { cssUrl } from "@/assets/utils";
 
 import StatTable from "@/components/scenes/Showcase/StatTable.vue";
 import { useOverlayDataStore } from "@/stores/socket";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 
 const state = useOverlayDataStore();
+const lang = computed(() => state.data?.lang);
 
 const np = computed(() => state.data?.now_playing?.osu);
 
-const lang = ref("en"); // Backend work needed
 const bg = computed(() => np.value?.background);
 const title = computed(() => np.value?.title);
 const artist = computed(() => np.value?.artist);

@@ -16,7 +16,7 @@
           :src="`https://assets.ppy.sh/old-flags/${teams[0].flag}.png`"
         />
         <div class="nick absolute-center-vertical">
-          {{ teams[0].name.replace(" ", "").slice(0, 3).toUpperCase() }}
+          {{ formatNick(teams[0].name) }}
         </div>
       </div>
       <div class="blue">
@@ -25,7 +25,7 @@
           :src="`https://assets.ppy.sh/old-flags/${teams[1].flag}.png`"
         />
         <div class="nick absolute-center-vertical">
-          {{ teams[1].name.replace(" ", "").slice(0, 3).toUpperCase() }}
+          {{ formatNick(teams[1].name) }}
         </div>
       </div>
     </div>
@@ -88,6 +88,13 @@ const props = defineProps({
   finished: Boolean,
   match: Object,
 });
+
+// Helper: keep only first three alphanumeric characters
+const formatNick = (name) =>
+  String(name || "")
+    .replace(/[^a-z0-9]/gi, "")
+    .slice(0, 3)
+    .toUpperCase();
 
 const allTeams = computed(() => intObjectToArray(state.data?.extended.teams));
 const teams = computed(() => {

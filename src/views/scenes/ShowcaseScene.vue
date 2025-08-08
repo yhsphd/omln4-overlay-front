@@ -1,6 +1,11 @@
 <template>
   <div class="scene master-showcase-scene">
-    <HeaderImage class="header" :img="`rounds/${mappoolName.toLowerCase()}`"></HeaderImage>
+    <HeaderImage
+      class="header"
+      :lang="lang"
+      :text="headerText"
+      :img="`rounds/${mappoolName.toLowerCase()}`"
+    ></HeaderImage>
 
     <div class="mainContainer horizontal-box absolute-center-horizontal">
       <div class="showcaseClient" ref="showcaseClient_ref">
@@ -59,7 +64,14 @@ import { useOverlayDataStore } from "@/stores/socket";
 
 const state = useOverlayDataStore();
 
+const lang = computed(() => state.data?.lang);
+
 const showcaseClient_ref = ref(null);
 
 const mappoolName = computed(() => state.data?.mappool_name);
+
+const headerText = ref({
+  en: "o!mLN4 Mappool Showcase",
+  cn: "o!mLN4 Mappool Showcase",
+});
 </script>
