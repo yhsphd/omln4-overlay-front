@@ -1,13 +1,13 @@
 <template>
   <div class="scene master-countdown-scene">
     <!--Case: Shocase-->
-    <template v-if="showcase">
+    <template v-if="!showcase">
       <CountdownWheel class="absolute-center wheel showcase" size="750px"></CountdownWheel>
       <CountdownTimeLeft class="absolute-center-vertical timeLeft showcase"></CountdownTimeLeft>
     </template>
 
     <!--Case: Non-showcase (VS)-->
-    <template v-if="!showcase">
+    <template v-if="showcase">
       <CountdownWheel class="absolute-center wheel" size="1500px"></CountdownWheel>
       <div class="absolute-center timeLeftBG"></div>
       <CountdownTimeLeft class="absolute-center timeLeft"></CountdownTimeLeft>

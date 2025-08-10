@@ -12,6 +12,7 @@
           class="card"
           :nick="currentQualsData?.nick"
           :id="currentQualsData?.id"
+          :seed="qualsData.length - playerIndex"
         ></PlayerCard>
         <div class="qMaps">
           <QualsMapResult

@@ -6,8 +6,12 @@
       <div class="infoContainer">
         <Transition name="switchPage" mode="out-in">
           <div v-if="npPageSwitcher.currPage === 'texts'" class="page textInfo">
-            <div class="artist zen-maru-gothic-medium">{{ artist }}</div>
-            <div class="title covered-by-your-grace-regular">{{ title }}</div>
+            <div class="artist zen-maru-gothic-medium">
+              {{ artist }}
+            </div>
+            <div class="title covered-by-your-grace-regular">
+              {{ title }}
+            </div>
             <div class="diffMapper zen-maru-gothic-medium">
               [{{ diff }}] - by <b>{{ mapper }}</b>
             </div>
@@ -55,6 +59,7 @@
   width: 360px;
   height: 100px;
   /* border: 4px solid red; */
+  overflow: hidden;
 }
 .infoContainer > .page {
   position: absolute;
@@ -63,12 +68,15 @@
   width: 100%;
   height: 100%;
   text-align: center;
+  white-space: nowrap;
 }
 .artist,
 .diffMapper {
+  position: relative;
   font-size: 16px;
 }
 .title {
+  position: relative;
   font-size: 32px;
   line-height: 40px;
   margin-top: 4px;
@@ -89,7 +97,7 @@ import { useOverlayDataStore } from "@/stores/socket";
 
 const state = useOverlayDataStore();
 
-const npPageSwitcher = ref(new pageSwitcher(["texts", "stats"], [10000, 10000]));
+const npPageSwitcher = ref(new pageSwitcher(["texts", "stats"], [10000, 1000]));
 
 const np = computed(() => state.data?.now_playing?.osu);
 
@@ -101,6 +109,6 @@ const mapper = computed(() => np.value?.mapper);
 const code = computed(() => np.value?.code);
 
 onMounted(() => {
-  npPageSwitcher.value.init();
+  // npPageSwitcher.value.init();
 });
 </script>

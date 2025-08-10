@@ -151,6 +151,7 @@ const formattedSchedule = computed(() => {
       year: "numeric",
       month: "long",
       day: "numeric",
+      timeZone: "UTC", // ensure date uses UTC too
     }) +
     " | " +
     date.toLocaleTimeString("en-US", {

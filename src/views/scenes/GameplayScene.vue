@@ -7,6 +7,9 @@
         <div class="clientBoxBorder" :style="{ width: diffPercentages[0] }">
           <div class="diff zen-maru-gothic-black" :class="{ hidden: winning !== 'red' }">
             {{ absDiff.toLocaleString("EN-US") }}
+            <svg class="arrow" width="12" height="14" viewBox="0 0 12 14">
+              <path d="M12 7L3.01142e-07 13.9282L9.06825e-07 0.0717964L12 7Z" fill="white" />
+            </svg>
           </div>
         </div>
         <DimensionInfo name="osu!tourney client 0" :source="redClientBox"></DimensionInfo>
@@ -15,6 +18,9 @@
         <div class="clientBoxBorder" :style="{ width: diffPercentages[1] }">
           <div class="diff zen-maru-gothic-black" :class="{ hidden: winning !== 'blue' }">
             {{ absDiff.toLocaleString("EN-US") }}
+            <svg class="arrow" width="12" height="14" viewBox="0 0 12 14">
+              <path d="M12 7L3.01142e-07 13.9282L9.06825e-07 0.0717964L12 7Z" fill="white" />
+            </svg>
           </div>
         </div>
         <DimensionInfo name="osu!tourney client 1" :source="blueClientBox"></DimensionInfo>
@@ -71,6 +77,18 @@
 .clientBox.blue .clientBoxBorder {
   background-color: var(--color-B);
   right: 0;
+}
+.arrow {
+  position: absolute;
+}
+.clientBox.red .arrow {
+  top: 8px;
+  right: 8px;
+}
+.clientBox.blue .arrow {
+  rotate: 180deg;
+  top: 8px;
+  left: 8px;
 }
 
 .diff {

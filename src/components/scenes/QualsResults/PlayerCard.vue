@@ -37,11 +37,15 @@
     <div class="value">
       {{ Math.round(playerDetails?.statistics?.pp ?? 0).toLocaleString("EN-US") }}
     </div>
+
+    <div class="key seed">Overall Seed</div>
+    <div class="value seed">{{ seed }}</div>
   </div>
 </template>
 
 <style scoped>
 .master-player-card {
+  position: relative;
   width: 420px;
   height: 840px;
   background-color: var(--color-BG);
@@ -81,6 +85,19 @@
   font-size: 36px;
   margin-left: 16px;
 }
+
+.key.seed {
+  position: absolute;
+  right: 20px;
+  bottom: 175px;
+}
+.value.seed {
+  position: absolute;
+  right: 20px;
+  bottom: -40px;
+  font-size: 200px;
+  text-align: right;
+}
 </style>
 
 <script setup>
@@ -92,6 +109,7 @@ const playerDetails = ref(null);
 const props = defineProps({
   nick: String,
   id: Number,
+  seed: Number,
 });
 
 watchEffect(async () => {
