@@ -14,10 +14,22 @@
         <path d="M26 0L32 6L26 12L20 6L26 0Z" fill="#C02230" />
         <path d="M46 0L52 6L46 12L40 6L46 0Z" fill="#C02230" />
       </svg>
+      <!-- this difftext div is always present for measuring overflowing -->
+      <div class="difftext" ref="diffText" :class="{ 'hidden': isOverflowing }">
+        <span class="bracket">[</span>
+        {{ diff }}
+        <span class="bracket">]</span>
+      </div>
 
-      <span class="bracket">[ </span>
-      {{ diff }}
-      <span class="bracket"> ]</span>
+      <div v-show="isOverflowing" ref="overflowContainer" class="overflow-flexbox">
+        <div style="padding-right: 8px; text-align: right;"><span class="bracket">[</span></div>
+        <div class="overflow-content">
+          <span class="scrolling-text" :style="{ animationDuration: animationDuration }">
+            {{ diff }}
+          </span>
+        </div>
+        <div style="padding-left: 8px; text-align: left;"><span class="bracket">]</span></div>
+      </div>
     </div>
     <div class="mapperReplayerInfo zen-maru-gothic-regular">
       mapped by <b>{{ mapper }}</b> <span class="divider zen-maru-gothic-black">|</span> replay by
@@ -63,10 +75,61 @@
   line-height: 43px;
   font-size: 24px;
   background-color: #333333;
+  overflow: hidden; /* Prevent content overflow */
 }
 
-.diff > .bracket {
+.diff > .overflow-flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diff > .overflow-flexbox > .overflow-content {
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+  width: 294px;
+  overflow: hidden;
+}
+
+.diff > .difftext {
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.diff > .difftext.hidden {
+  visibility: hidden;
+  position: absolute;
+  pointer-events: none;
+}
+
+.scrolling-text {
+  display: inline-block;
+  animation: scroll-text var(--animation-duration, 10s) cubic-bezier(.5,.3,.5,.7) infinite;
+}
+
+.bracket {
   color: var(--color-R);
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(calc(-100% + 294px));
+  }
+  65% {
+    transform: translateX(calc(-100% + 294px));
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .mapperReplayerInfo {
@@ -118,7 +181,7 @@ import { cssUrl } from "@/assets/utils";
 
 import StatTable from "@/components/scenes/Showcase/StatTable.vue";
 import { useOverlayDataStore } from "@/stores/socket";
-import { computed } from "vue";
+import { computed, ref, onMounted, watch, nextTick } from "vue";
 
 const state = useOverlayDataStore();
 const lang = computed(() => state.data?.lang);
@@ -137,4 +200,29 @@ const original = computed(() => np.value?.original);
 const originalBadgeUrl = computed(() =>
   lang.value === "cn" ? originalBadgeImage_cn : originalBadgeImage_en
 );
+
+const diffText = ref(null)
+const isOverflowing = ref(false);
+const animationDuration = ref('10s');
+
+const checkOverflow = () => {
+  nextTick(() => {
+    if (diffText.value) {
+      const scrollWidth = diffText.value.scrollWidth;
+      isOverflowing.value = scrollWidth > 330;
+      console.log(scrollWidth)
+
+      const duration = Math.max(10, (scrollWidth / 100) * 3);
+      animationDuration.value = `${duration}s`;
+    }
+  });
+};
+
+onMounted(() => {
+  checkOverflow();
+});
+
+watch(diff, () => {
+  checkOverflow();
+});
 </script>
