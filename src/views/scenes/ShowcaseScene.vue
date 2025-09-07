@@ -4,7 +4,7 @@
       class="header"
       :lang="lang"
       :text="headerText"
-      :img="`rounds/${mappoolName.toLowerCase()}`"
+      :img="`rounds/${(mappoolName)}`"
     ></HeaderImage>
 
     <div class="mainContainer horizontal-box absolute-center-horizontal">

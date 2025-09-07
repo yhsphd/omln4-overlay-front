@@ -4,8 +4,9 @@
       <div class="head">UP NEXT</div>
       <div
         class="map"
-        v-for="map in mappool"
+        v-for="(map, index) in mappool"
         :key="map.id"
+        :class="{ 'bg-invisible': index > currentMapIndex }"
         :style="{
           borderColor: `var(--color-${splitCode(map.code)[0]})`,
           backgroundImage: `url('${map.background}')`,
@@ -78,15 +79,48 @@
   line-height: 50px;
   text-align: center;
   font-size: 20px;
+  text-shadow: 0px 0px 3px #000000, 0px 0px 3px #000000;
+}
+
+.bg-invisible {
+  background-image: none !important;
+  border-color: #333333 !important;
+}
+
+.bg-invisible .map-text {
+  color: #333333 !important;
 }
 </style>
 
 <script setup>
-import { computed } from "vue";
+import { ref, nextTick, onMounted, watch, computed } from "vue";
 import { intObjectToArray, splitCode } from "@/assets/utils";
 import { useOverlayDataStore } from "@/stores/socket";
 
 const state = useOverlayDataStore();
 
-const mappool = computed(() => intObjectToArray(state.data?.mappool));
+const mappool = computed(() =>intObjectToArray(state.data?.mappool))
+
+const currentmd5 = computed(() => {
+  return state.data?.now_playing?.osu?.md5;
+});
+const currentMapIndex = ref(-1);
+
+const checkMapIndex = () => {
+  nextTick(() => {
+    const foundIndex = mappool.value.findIndex((map) => map.md5 === currentmd5.value);
+    if (currentMapIndex.value !== foundIndex) {
+      currentMapIndex.value = foundIndex;
+    }
+  });
+};
+
+onMounted(() => {
+  checkMapIndex();
+});
+
+watch(currentmd5, () => {
+  checkMapIndex();
+});
+
 </script>

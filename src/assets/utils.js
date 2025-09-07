@@ -222,7 +222,7 @@ export const numToTeamCol = (num) => {
 
 export const cssUrl = (url) => {
   if (!url) return "";
-  return `url('${url}')`;
+  return `url("${String(url).replace(/"/g, '\\"')}")`;
 };
 
 export const upcomingMatches = (overlayData, now, n) => {

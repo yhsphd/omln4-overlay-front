@@ -210,7 +210,6 @@ const checkOverflow = () => {
     if (diffText.value) {
       const scrollWidth = diffText.value.scrollWidth;
       isOverflowing.value = scrollWidth > 330;
-      console.log(scrollWidth)
 
       const duration = Math.max(10, (scrollWidth / 100) * 3);
       animationDuration.value = `${duration}s`;
