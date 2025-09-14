@@ -6,7 +6,7 @@
       :lang="lang"
     ></HeaderImage>
 
-    <CowntdownNowPlaying class="np"></CowntdownNowPlaying>
+    <countdownNowPlaying class="np"></countdownNowPlaying>
     <CountdownWheel class="clock" size="720px"></CountdownWheel>
 
     <div class="schedulesContainer">
@@ -46,7 +46,7 @@
 import { upcomingMatches } from "@/assets/utils";
 import HeaderImage from "@/components/HeaderImage.vue";
 import CountdownWheel from "@/components/scenes/Countdown/CountdownWheel.vue";
-import CowntdownNowPlaying from "@/components/scenes/Countdown/CowntdownNowPlaying.vue";
+import countdownNowPlaying from "@/components/scenes/Countdown/countdownNowPlaying.vue";
 import MatchComponent from "@/components/scenes/MatchSchedules/MatchComponent.vue";
 import { useOverlayDataStore } from "@/stores/socket";
 import { computed, ref, onMounted, onUnmounted } from "vue";

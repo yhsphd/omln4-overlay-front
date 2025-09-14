@@ -12,6 +12,8 @@ import BracketsScene from "@/views/scenes/BracketsScene.vue";
 import OiiResultsScene from "@/views/scenes/OiiResultsScene.vue";
 import LuckyDrawScene from "@/views/scenes/LuckyDrawScene.vue";
 import OiiDetailsScene from "@/views/scenes/OiiDetailsScene.vue";
+import QualsResultsBulkScene from "@/views/scenes/QualsResultsBulkScene.vue";
+import TestOverlayScene from "@/views/scenes/TestOverlayScene.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -80,6 +82,16 @@ const router = createRouter({
       path: "/oiiDetails",
       name: "oiiDetails",
       component: OiiDetailsScene,
+    },
+    {
+      path: "/qresultsbulk",
+      name: "qresultsbulk",
+      component: QualsResultsBulkScene,
+    },
+    {
+      path: "/testoverlay",
+      name: "testoverlay",
+      component: TestOverlayScene,
     },
   ],
 });

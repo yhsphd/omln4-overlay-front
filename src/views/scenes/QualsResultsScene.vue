@@ -73,7 +73,7 @@ const state = useOverlayDataStore();
 
 const lang = computed(() => state.data?.lang);
 
-const playerIndex = ref(0);
+const playerIndex = ref(Object.keys(state.data?.extended?.quals).length - 70);
 const qualsData = computed(() => intObjectToArray(state.data?.extended?.quals));
 const currentQualsData = computed(() => qualsData.value[playerIndex.value]);
 const mappool = computed(() => state.data?.mappool);

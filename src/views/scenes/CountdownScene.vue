@@ -54,7 +54,7 @@
 <script setup>
 import CountdownTimeLeft from "@/components/scenes/Countdown/CountdownTimeLeft.vue";
 import CountdownWheel from "@/components/scenes/Countdown/CountdownWheel.vue";
-import CountdownNowPlaying from "@/components/scenes/Countdown/CowntdownNowPlaying.vue";
+import CountdownNowPlaying from "@/components/scenes/Countdown/countdownNowPlaying.vue";
 
 import { useOverlayDataStore } from "@/stores/socket";
 import { computed } from "vue";

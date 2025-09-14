@@ -28,14 +28,14 @@
       </div>
     </div>
 
-    <div class="key">Rank</div>
+    <div class="key">Rank (4k)</div>
     <div class="value">
-      #{{ playerDetails?.statistics?.global_rank.toLocaleString("EN-US") ?? "---" }}
+      #{{ playerDetails?.statistics?.variants[0].global_rank.toLocaleString("EN-US") ?? "---" }}
     </div>
 
-    <div class="key">pp count</div>
+    <div class="key">pp (4k)</div>
     <div class="value">
-      {{ Math.round(playerDetails?.statistics?.pp ?? 0).toLocaleString("EN-US") }}
+      {{ Math.round(playerDetails?.statistics?.variants[0].pp ?? 0).toLocaleString("EN-US") }}
     </div>
 
     <div class="key seed">Overall Seed</div>
@@ -116,5 +116,6 @@ watchEffect(async () => {
   if (!props.id) return;
   const response = await fetch(`${rootUrl}/api/osu/user?id=${props.id}`);
   playerDetails.value = await response.json();
+  console.log(playerDetails.value)
 });
 </script>

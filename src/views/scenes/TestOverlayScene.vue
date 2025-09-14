@@ -1,6 +1,6 @@
 <template>
   <div class="scene master-test-overlay-scene">
-    <img class="testOverlay" :src="testImage" />
+    {{ state }}
   </div>
 </template>
 
@@ -18,5 +18,7 @@
 </style>
 
 <script setup>
-import testImage from "@/assets/img/image.png";
+import { useOverlayDataStore } from "@/stores/socket";
+
+const state = useOverlayDataStore();
 </script>
