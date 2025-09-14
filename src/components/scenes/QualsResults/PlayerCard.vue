@@ -116,6 +116,5 @@ watchEffect(async () => {
   if (!props.id) return;
   const response = await fetch(`${rootUrl}/api/osu/user?id=${props.id}`);
   playerDetails.value = await response.json();
-  console.log(playerDetails.value)
 });
 </script>

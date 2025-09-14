@@ -12,10 +12,10 @@
             </div>
           </td>
           <td class="statKey">
-            <div>HP</div>
+            <div>BPM</div>
           </td>
           <td class="statValue">
-            <div>{{ stats.hp.toFixed(2) }}</div>
+            <div>{{ stats.bpm }}</div>
           </td>
         </tr>
         <tr>
@@ -81,6 +81,6 @@ import starImage from "@/assets/img/map/star.png";
 import { secondsToMMSS } from "@/assets/utils";
 
 defineProps({
-  stats: { type: Object, default: () => ({ sr: 0, hp: 0, od: 0, length: 0 }) },
+  stats: { type: Object, default: () => ({ sr: 0, bpm: 0, od: 0, length: 0 }) },
 });
 </script>

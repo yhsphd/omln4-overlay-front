@@ -12,10 +12,10 @@
             </div>
           </td>
           <td>
-            <div class="statKey">HP</div>
+            <div class="statKey">BPM</div>
           </td>
           <td>
-            <div class="statValue">{{ stats.hp.toFixed(2) }}</div>
+            <div class="statValue">{{ stats.bpm }}</div>
           </td>
         </tr>
         <tr>

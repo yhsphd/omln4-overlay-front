@@ -65,7 +65,7 @@ import HeaderImage from "@/components/HeaderImage.vue";
 import PlayerCard from "@/components/scenes/QualsResults/PlayerCard.vue";
 import QualsMapResult from "@/components/scenes/QualsResults/QualsMapResult.vue";
 
-import { computed, ref } from "vue";
+import { computed, ref, watchEffect } from "vue";
 import { intObjectToArray } from "@/assets/utils";
 import { useOverlayDataStore } from "@/stores/socket";
 
@@ -73,8 +73,19 @@ const state = useOverlayDataStore();
 
 const lang = computed(() => state.data?.lang);
 
-const playerIndex = ref(Object.keys(state.data?.extended?.quals).length - 70);
 const qualsData = computed(() => intObjectToArray(state.data?.extended?.quals));
 const currentQualsData = computed(() => qualsData.value[playerIndex.value]);
 const mappool = computed(() => state.data?.mappool);
+
+const playerIndex = ref(0);
+
+watchEffect(() => {
+  if (qualsData.value.length > 0) {
+    if (qualsData.value.length >= 70) {
+      playerIndex.value = qualsData.value.length - 70;
+    } else {
+      playerIndex.value = qualsData.value.length - 1;
+    }
+  }
+});
 </script>
