@@ -72,9 +72,9 @@ onBeforeUnmount(() => {
 });
 
 const hourDeg = computed(() => {
-  const h = now.value.getUTCHours() % 12;
+  const h = now.value.getUTCHours();
   const m = now.value.getUTCMinutes();
-  return (h + m / 60) * 30 + 180;
+  return (h + m / 60) * 15 + 180;
 });
 
 const minuteDeg = computed(() => {
