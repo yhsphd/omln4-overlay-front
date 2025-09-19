@@ -4,7 +4,11 @@
     <div class="pfp" :style="{ backgroundImage: cssUrl(`https://a.ppy.sh/${team.players[0].id}`) }">
       <div class="seedBadge zen-maru-gothic-black">{{ team.seed }}</div>
     </div>
-    <img v-if="state.data?.lang !== 'cn'" class="flag" :src="`https://assets.ppy.sh/old-flags/${team.flag}.png`" />
+    <img
+      class="flag"
+      :class="{ 'hidden': state.data?.lang === 'cn' }"
+      :src="`https://assets.ppy.sh/old-flags/${team.flag}.png`" />
+    <img class="flag" :src="`https://assets.ppy.sh/old-flags/${team.flag}.png`" />
     <div class="teamInfo">
       <div class="nick">{{ team.players[0].nick }}</div>
       <div class="sub zen-maru-gothic-black">PLAYER {{ isRed ? 1 : 2 }}</div>
@@ -80,6 +84,10 @@
   margin: 16px;
 }
 
+.flag.hidden {
+  visibility: hidden;
+}
+
 .color {
   position: absolute;
   height: 96px;
@@ -135,13 +143,9 @@
 </style>
 
 <script setup>
-import { useOverlayDataStore } from "@/stores/socket";
-
 import { cssUrl } from "@/assets/utils";
 import redKanji from "@/assets/img/redKanji.png";
 import blueKanji from "@/assets/img/blueKanji.png";
-
-const state = useOverlayDataStore();
 
 defineProps({
   team: Object,
