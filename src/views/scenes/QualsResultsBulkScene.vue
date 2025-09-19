@@ -67,7 +67,7 @@ const state = useOverlayDataStore();
 const lang = computed(() => state.data?.lang);
 
 const playerCount = computed(() => Object.keys(state.data?.extended?.quals || {}).length);
-const maxPage = computed(() => Math.floor(((playerCount.value - 71)) / 10));
+const maxPage = computed(() => Math.floor(((playerCount.value - 1)) / 10));
 const offset = computed(() => playerCount.value % 10);
 const page = ref(0);
 
@@ -107,6 +107,7 @@ const fetchFlags = async (ids) => {
   for (const user of ids) {
     countryData.value[user] = cache[user] || 'XX';
   }
+  console.log(cache);
 }
 
 watchEffect(() => {

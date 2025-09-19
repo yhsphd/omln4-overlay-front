@@ -11,7 +11,7 @@
       </div>
 
       <div class="red">
-        <img
+        <img v-if="state.data?.lang !== 'cn'"
           class="flag absolute-center-vertical"
           :src="`https://assets.ppy.sh/old-flags/${teams[0].flag}.png`"
         />
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="blue">
-        <img
+        <img v-if="state.data?.lang !== 'cn'"
           class="flag absolute-center-vertical"
           :src="`https://assets.ppy.sh/old-flags/${teams[1].flag}.png`"
         />

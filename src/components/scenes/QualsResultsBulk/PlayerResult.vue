@@ -15,6 +15,7 @@
         </div>
       </div>
       <img
+        v-if="state.data?.lang !== 'cn'"
         class="flag"
         :src="`https://assets.ppy.sh/old-flags/${flag}.png`"
       />
@@ -151,9 +152,12 @@
 </style>
 
 <script setup>
+
+  import { useOverlayDataStore } from "@/stores/socket";
   import { convertOrdinalNumber, cssUrl, rootUrl } from "@/assets/utils";
   import { computed, ref, watchEffect } from "vue";
 
+  const state = useOverlayDataStore();
   const playerDetails = ref(null);
 
   const props = defineProps({

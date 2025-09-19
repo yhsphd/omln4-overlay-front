@@ -12,7 +12,7 @@
       >
         <div class="score absolute-center-vertical" :class="{ ff: result?.[i] === -1 }">
           {{ resultStr[i] }}
-          <img
+          <img v-if="state.data?.lang !== 'cn'"
             class="flag absolute-center-vertical"
             :src="`https://assets.ppy.sh/old-flags/${teams[i].flag}.png`"
           />

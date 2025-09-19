@@ -11,6 +11,7 @@
       </svg>
 
       <img
+        v-if="state.data?.lang !== 'cn'"
         class="flag absolute-center"
         :src="`https://assets.ppy.sh/old-flags/${playerDetails?.country_code}.png`"
       />
@@ -101,8 +102,11 @@
 </style>
 
 <script setup>
+import { useOverlayDataStore } from "@/stores/socket";
 import { cssUrl, rootUrl } from "@/assets/utils";
 import { ref, watchEffect } from "vue";
+
+const state = useOverlayDataStore();
 
 const playerDetails = ref(null);
 

@@ -6,8 +6,8 @@
       :class="{ red: i === 0, blue: i === 1 }"
       :key="team"
     >
-      <div class="rankHeader zen-maru-gothic-bold">RANK</div>
-      <div class="rankNumber">{{ team.players[0].rank }}</div>
+      <div class="rankHeader zen-maru-gothic-bold">RANK (4K)</div>
+      <div class="rankNumber">{{ team.players[0].rank_4k }}</div>
     </div>
     <HeaderImage class="absolute-center" :lang="lang" img="versus"></HeaderImage>
   </div>
