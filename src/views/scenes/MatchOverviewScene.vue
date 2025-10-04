@@ -18,6 +18,7 @@
         v-for="bind in innerBinds[0]"
         v-bind="bind"
         :key="bind"
+        :isMatchOverview="true"
       ></MapComponent>
     </div>
     <div class="box blue">
@@ -26,6 +27,7 @@
         v-for="bind in innerBinds[1]"
         v-bind="bind"
         :key="bind"
+        :isMatchOverview="true"
       ></MapComponent>
     </div>
 

@@ -1,6 +1,8 @@
 <template>
   <div class="master-thumbnail-component">
-    <div class="thumbImageContainer" :class="{ completed: ban || win }">
+    <div class="thumbImageContainer"
+    :class="{ completed: ban || win && !isMatchOverview }"
+    :style="isMatchOverview ? { filter: 'brightness(1)'} : {}">
       <div class="bgToner" :class="{ picked: pick, red: team, blue: !team }"></div>
       <div
         class="bgImage"
@@ -9,7 +11,9 @@
       ></div>
     </div>
     <img v-if="ban" class="bannedImg" :src="team ? bannedImage_r : bannedImage_b"/>
-    <img v-if="pick" class="pickedImg" :src="team ? pickedImage_r : pickedImage_b" :class="{ completed_alt: ban || win }"/>
+    <img v-if="pick" class="pickedImg" :src="team ? pickedImage_r : pickedImage_b"
+    :class="{ completed: ban || win && !isMatchOverview }"
+    :style="isMatchOverview ? { filter: 'brightness(1)'} : {}"/>
   </div>
 </template>
 
@@ -94,6 +98,7 @@ const props = defineProps({
   pick: Boolean,
   win: Boolean,
   team: Boolean, // true: red, false: blue
+  isMatchOverview: Boolean,
 });
 
 const bgUrl = computed(() => (props.hidden ? hiddenImage : props.bg));

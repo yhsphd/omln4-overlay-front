@@ -2,7 +2,8 @@
   <div class="master-map-component">
     <div class="wrapper">
       <div class="content absolute-center-horizontal"
-      :class="{ scrolledUp , completed: ban || win }">
+      :class="{ scrolledUp, completed: ban || win && !isMatchOverview }"
+      :style="isMatchOverview ? { filter: 'brightness(1)'} : {}">
         <div v-if="hidden" class="hiddenText antihero">SERVING<br />SOON!</div>
         <template v-if="!hidden">
           <div class="artist zen-maru-gothic-regular">{{ artist }}</div>
@@ -22,10 +23,15 @@
         :pick="pick"
         :win="win"
         :team="banpickTeam"
+        :isMatchOverview
       ></ThumbnailComponent>
-      <CodeBadge class="codeBadge" :code="code" :class="{ completed: ban || win }"></CodeBadge>
+      <CodeBadge class="codeBadge" :code="code"
+      :class="{ completed: ban || win && !isMatchOverview }"
+      :style="isMatchOverview ? { filter: 'brightness(1)'} : {}"></CodeBadge>
       <StageBadge v-if="quals" class="stageBadge">{{ stage }}</StageBadge>
-      <WinBadge v-if="win" class="winBadge" :team="winTeam" :class="{ completed_alt: ban || win }"></WinBadge>
+      <WinBadge v-if="win" class="winBadge" :team="winTeam"
+      :class="{ completed: ban || win && !isMatchOverview }"
+      :style="isMatchOverview ? { filter: 'brightness(1)'} : {}"></WinBadge>
       <ProtectBadge
         v-if="protect"
         class="protectBadge"
@@ -174,6 +180,7 @@ const props = defineProps({
   ban: { type: Boolean, default: false }, // banned?
   banpickTeam: { type: Boolean, default: true }, // banned/protected team, true: red, false: blue
   altBan: { type: Boolean, default: false }, // use badges to indicate ban?
+  isMatchOverview: { type: Boolean, default: false }, // are we in match overview scene?
 });
 
 const artist = computed(() => props.map.artist);
