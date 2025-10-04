@@ -3,8 +3,8 @@
     <!--Iteration-->
     <div v-for="item in chatData" :key="item">
       <div class="horizontal-box chat zen-maru-gothic-regular">
-        <div class="timestamp">{{ formatTime(item[0]) }}</div>
-        <div class="nick zen-maru-gothic-black" :style="{ color: nickCol(item[1]) }">
+        <div class="timestamp">&nbsp;{{ formatTime(item[0]) }}</div>
+        <div class="nick dm-serif-display-regular" :style="{ color: nickCol(item[1]) }">
           {{ item[1] }}
         </div>
         <div class="cell message">{{ item[2] }}</div>
@@ -16,7 +16,7 @@
 
 <style scoped>
 .master-chat-box {
-  font-size: 20px;
+  font-size: 22px;
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -28,20 +28,21 @@
 }
 
 .chat {
-  margin-top: 8px;
+  padding-bottom: 10px;
 }
 
 .chat > * {
-  line-height: 24px;
+  line-height: 22px;
   margin: 0 4px 0 4px;
 }
 
 .timestamp {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .message {
   width: 0;
+  line-height: 18px;
   flex-grow: 1;
 }
 </style>
@@ -49,7 +50,7 @@
 <script setup>
 import { intObjectToArray } from "@/assets/utils";
 import { useOverlayDataStore } from "@/stores/socket";
-import { computed, onUpdated, ref } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
 
 const state = useOverlayDataStore();
 
@@ -61,18 +62,28 @@ const formatTime = (time) => {
 
 const masterElem = ref(null);
 
-const chatDataLen = ref(0);
-onUpdated(() => {
-  if (chatDataLen.value !== chatData.value.length) {
-    chatDataLen.value = chatData.value.length;
-    masterElem.value.lastElementChild?.scrollIntoView({ behavior: "smooth" });
+// Watch for changes in chat object keys length and scroll to bottom
+watch(
+  () => chatData.value ? Object.keys(chatData.value).length : 0,
+  (newLength, oldLength) => {
+    if (newLength && newLength > (oldLength || 0)) {
+      nextTick(() => {
+        if (masterElem.value?.lastElementChild) {
+          masterElem.value.lastElementChild.scrollIntoView({ 
+            behavior: "smooth",
+            block: "end"
+          });
+        }
+      });
+    }
   }
-});
+);
 
 const teamNicks = computed(() => {
   const teams = intObjectToArray(state.data?.teams);
   return teams.map((x) => intObjectToArray(x.players).map((y) => y.nick));
 });
+
 const nickCol = (nick) => {
   if (teamNicks.value?.[0]?.includes(nick)) {
     return "var(--color-R)";

@@ -84,6 +84,8 @@ const lang = computed(() => state.data?.lang);
 const mappool = computed(() => intObjectToArray(state.data?.mappool));
 const progress = computed(() => state.data?.progress);
 const codeToStatus = computed(() => {
+  if (!mappool.value?.length || !progress.value) return {};
+  
   const poolStatus = {};
 
   for (let i = 0; i < mappool.value.length; i++) {
@@ -100,32 +102,43 @@ const codeToStatus = computed(() => {
     };
   }
 
-  // Pre-match stage
   const preMatch = progress.value.pre_match;
+  if (!preMatch) return poolStatus;
+
+  // Pre-match stage
   if (preMatch.red_protect)
-    Object.assign(poolStatus[preMatch.red_protect], { protectTeam: true, protect: true });
+    poolStatus[preMatch.red_protect] = { ...poolStatus[preMatch.red_protect], protectTeam: true, protect: true };
   if (preMatch.red_ban)
-    Object.assign(poolStatus[preMatch.red_ban], { banpickTeam: true, ban: true });
+    poolStatus[preMatch.red_ban] = { ...poolStatus[preMatch.red_ban], banpickTeam: true, ban: true };
   if (preMatch.blue_protect)
-    Object.assign(poolStatus[preMatch.blue_protect], { protectTeam: false, protect: true });
+    poolStatus[preMatch.blue_protect] = { ...poolStatus[preMatch.blue_protect], protectTeam: false, protect: true };
   if (preMatch.blue_ban)
-    Object.assign(poolStatus[preMatch.blue_ban], { banpickTeam: false, ban: true });
+    poolStatus[preMatch.blue_ban] = { ...poolStatus[preMatch.blue_ban], banpickTeam: false, ban: true };
 
   // Match stage
   const teamNames = intObjectToArray(state.data?.teams).map((x) => x.name);
   const picks = intObjectToArray(progress.value.pick);
   const winners = intObjectToArray(progress.value.winner);
-  const firstPick = !teamNames.indexOf(preMatch.first_pick); // true: red, false: blue
+  const firstPickIndex = teamNames.indexOf(preMatch.first_pick);
+  const firstPick = firstPickIndex === 0; // true: red (index 0), false: blue (index 1)
 
   let turn = firstPick;
   for (let i = 0; i < picks.length; i++) {
-    if (picks[i]) Object.assign(poolStatus[picks[i]], { banpickTeam: turn, pick: true });
+    if (picks[i]) {
+      poolStatus[picks[i]] = { ...poolStatus[picks[i]], banpickTeam: turn, pick: true };
+    }
     turn = !turn;
   }
 
   for (let i = 0; i < winners.length; i++) {
-    if (picks[i])
-      Object.assign(poolStatus[picks[i]], { win: true, winTeam: !teamNames.indexOf(winners[i]) });
+    if (picks[i]) {
+      const winTeamIndex = teamNames.indexOf(winners[i]);
+      poolStatus[picks[i]] = { 
+        ...poolStatus[picks[i]], 
+        win: true, 
+        winTeam: winTeamIndex === 0 
+      };
+    }
   }
 
   return poolStatus;

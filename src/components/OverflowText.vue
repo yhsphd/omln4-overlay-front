@@ -1,9 +1,6 @@
 <template>
   <div class="master-overflow-text" ref="masterRef">
-    <div v-if="scrollNeeded" class="content" ref="contentRef">
-      <slot></slot>
-    </div>
-    <div v-if="!scrollNeeded" class="noScroll">
+    <div class="content" ref="contentRef" :class="{ scroll: scrollNeeded, 'absolute-center-horizontal': !scrollNeeded }">
       <slot></slot>
     </div>
   </div>
@@ -16,26 +13,33 @@
 }
 
 .content {
-  position: absolute;
+  position: relative;
   white-space: nowrap;
   width: fit-content;
-  transform: translateX(0); /* move element with this property */
   transition-property: transform;
   transition-timing-function: linear;
   transition-duration: 1s; /* move element with this property */
 }
+
+.scroll{
+  transform: translateX(0); /* move element with this property */
+}
+
+.hidden{
+  opacity: 0;
+}
 </style>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, nextTick, onMounted, ref, useTemplateRef } from "vue";
 
 const props = defineProps({
   speed: { type: Number, default: 20 },
   wait: { type: Number, default: 5000 },
 });
 
-const masterRef = ref();
-const contentRef = ref();
+const masterRef = useTemplateRef("masterRef")
+const contentRef = useTemplateRef("contentRef")
 
 const calcLenDiff = () => {
   if (!masterRef.value || !contentRef.value) return 0;
@@ -59,10 +63,12 @@ const scroll = () => {
 };
 
 onMounted(() => {
-  lenDiff.value = calcLenDiff();
-  if (lenDiff.value > 0) {
-    scrollNeeded.value = true;
-    scroll();
-  }
+  setTimeout(() => {
+    lenDiff.value = calcLenDiff();
+    if (lenDiff.value > 0) {
+      scrollNeeded.value = true;
+      scroll();
+    };
+  }, 100);
 });
 </script>

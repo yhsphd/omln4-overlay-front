@@ -1,7 +1,8 @@
 <template>
   <div class="master-map-component">
     <div class="wrapper">
-      <div class="content absolute-center-horizontal" :class="{ scrolledUp }">
+      <div class="content absolute-center-horizontal"
+      :class="{ scrolledUp , completed: ban || win }">
         <div v-if="hidden" class="hiddenText antihero">SERVING<br />SOON!</div>
         <template v-if="!hidden">
           <div class="artist zen-maru-gothic-regular">{{ artist }}</div>
@@ -19,11 +20,12 @@
         :bg="bgUrl"
         :ban="ban"
         :pick="pick"
+        :win="win"
         :team="banpickTeam"
       ></ThumbnailComponent>
-      <CodeBadge class="codeBadge" :code="code"></CodeBadge>
+      <CodeBadge class="codeBadge" :code="code" :class="{ completed: ban || win }"></CodeBadge>
       <StageBadge v-if="quals" class="stageBadge">{{ stage }}</StageBadge>
-      <WinBadge v-if="win" class="winBadge" :team="winTeam"></WinBadge>
+      <WinBadge v-if="win" class="winBadge" :team="winTeam" :class="{ completed_alt: ban || win }"></WinBadge>
       <ProtectBadge
         v-if="protect"
         class="protectBadge"
@@ -123,6 +125,14 @@
   font-size: 8px;
   margin-bottom: 4%;
   white-space: nowrap;
+}
+
+.completed {
+  filter: brightness(0.3);
+}
+
+.completed_alt {
+  filter: brightness(0.5);
 }
 </style>
 

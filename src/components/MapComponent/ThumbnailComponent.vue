@@ -1,6 +1,6 @@
 <template>
   <div class="master-thumbnail-component">
-    <div class="thumbImageContainer">
+    <div class="thumbImageContainer" :class="{ completed: ban || win }">
       <div class="bgToner" :class="{ picked: pick, red: team, blue: !team }"></div>
       <div
         class="bgImage"
@@ -8,8 +8,8 @@
         :style="{ backgroundImage: `url('${bgUrl}')` }"
       ></div>
     </div>
-    <img v-if="ban" class="bannedImg" :src="team ? bannedImage_r : bannedImage_b" />
-    <img v-if="pick" class="pickedImg" :src="team ? pickedImage_r : pickedImage_b" />
+    <img v-if="ban" class="bannedImg" :src="team ? bannedImage_r : bannedImage_b"/>
+    <img v-if="pick" class="pickedImg" :src="team ? pickedImage_r : pickedImage_b" :class="{ completed_alt: ban || win }"/>
   </div>
 </template>
 
@@ -68,6 +68,14 @@
   top: 16px;
   height: 100px;
 }
+
+.completed {
+  filter: brightness(0.3);
+}
+
+.completed_alt {
+  filter: brightness(0.4);
+}
 </style>
 
 <script setup>
@@ -84,6 +92,7 @@ const props = defineProps({
   bg: String,
   ban: Boolean,
   pick: Boolean,
+  win: Boolean,
   team: Boolean, // true: red, false: blue
 });
 

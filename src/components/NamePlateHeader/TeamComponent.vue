@@ -8,7 +8,6 @@
       class="flag"
       :class="{ 'hidden': state.data?.lang === 'cn' }"
       :src="`https://assets.ppy.sh/old-flags/${team.flag}.png`" />
-    <img class="flag" :src="`https://assets.ppy.sh/old-flags/${team.flag}.png`" />
     <div class="teamInfo">
       <div class="nick">{{ team.players[0].nick }}</div>
       <div class="sub zen-maru-gothic-black">PLAYER {{ isRed ? 1 : 2 }}</div>
@@ -133,12 +132,13 @@
   height: 20px;
   margin: 0 5px 0 5px;
   border-radius: 50%;
-  background-color: #d9d9d9;
-  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
+  background-color: #404040;
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.8));
 }
 
 .star.enabled {
   background-color: var(--color-Y);
+  filter: drop-shadow(0px 0px 5px rgba(255, 225, 123, 0.5));
 }
 </style>
 
@@ -146,6 +146,9 @@
 import { cssUrl } from "@/assets/utils";
 import redKanji from "@/assets/img/redKanji.png";
 import blueKanji from "@/assets/img/blueKanji.png";
+import { useOverlayDataStore } from "@/stores/socket";
+
+const state = useOverlayDataStore();
 
 defineProps({
   team: Object,

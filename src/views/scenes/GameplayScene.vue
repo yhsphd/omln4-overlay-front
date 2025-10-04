@@ -30,13 +30,13 @@
     <div class="bottomDimmer"></div>
 
     <div class="scoreContainer red">
-      <div class="score">
+      <div class="score" :class="{ winning: winning === 'red' }">
         <count-up :startVal="liveScoresBak[0]" :endVal="liveScores?.[0]" :duration="0.1"></count-up>
       </div>
       <div class="bottomText zen-maru-gothic-black">SCORE</div>
     </div>
     <div class="scoreContainer blue">
-      <div class="score">
+      <div class="score" :class="{ winning: winning === 'blue' }">
         <count-up :startVal="liveScoresBak[1]" :endVal="liveScores?.[1]" :duration="0.1"></count-up>
       </div>
       <div class="bottomText zen-maru-gothic-black">SCORE</div>
@@ -142,6 +142,10 @@
   font-size: 72px;
   line-height: 72px;
 }
+.winning {
+  color: var(--color-Y);
+  filter: drop-shadow(0px 0px 5px rgba(255, 225, 123, 0.2));
+}
 .bottomText {
   font-size: 24px;
 }
@@ -185,7 +189,7 @@ const absDiff = computed(() => Math.abs(diff.value));
 
 ///////// SCORE BAR LENGTH COMPUTATION FORMULA /////////
 const normalizedDiff = computed(() => {
-  const maxDiff = 100000; // 100k
+  const maxDiff = 50000; // 50k
   const clamped = clamp(diff.value, -maxDiff, maxDiff);
   return clamped / maxDiff; // Returns value between -1 and +1
 });
